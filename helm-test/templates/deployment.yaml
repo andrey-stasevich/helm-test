@@ -30,6 +30,9 @@ spec:
           command: {{ .Values.command }}
           args: {{ .Values.args }}
           {{- end }}
+          env:
+            - name: JDBC_URL
+              value: jdbc:postgresql://{{ .Values.environment.rds_endpoint }}:5432/
           ports:
             - name: app
               containerPort: {{ .Values.service.port }}
